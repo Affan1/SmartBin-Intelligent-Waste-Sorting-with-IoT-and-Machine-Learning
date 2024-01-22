@@ -22,3 +22,4 @@ torch
 torchvision
 torchaudio
 ipykernel
+-e .
