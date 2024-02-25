@@ -70,13 +70,16 @@ class Training:
     def train(self):
         self.steps_per_epoch = self.train_generator.samples // self.train_generator.batch_size
         self.validation_steps = self.valid_generator.samples // self.valid_generator.batch_size
+        
+        callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=3)
 
         self.model.fit(
             self.train_generator,
             epochs=self.config.params_epochs,
             steps_per_epoch=self.steps_per_epoch,
             validation_steps=self.validation_steps,
-            validation_data=self.valid_generator
+            validation_data=self.valid_generator,
+            callbacks= callback
         )
 
         self.save_model(
