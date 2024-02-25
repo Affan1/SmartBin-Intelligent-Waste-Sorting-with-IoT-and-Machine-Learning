@@ -77,7 +77,7 @@ class ConfigurationManager:
     def get_evaluation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
             path_of_model="artifacts/training/model.h5",
-            training_data="artifacts/data_ingestion/DATASET/TRAIN",
+            training_data="artifacts/data_ingestion/DATASET/TEST",
             mlflow_uri="https://dagshub.com/Affan1/SmartBin-Intelligent-Waste-Sorting-with-IoT-and-Machine-Learning.mlflow",
             all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,

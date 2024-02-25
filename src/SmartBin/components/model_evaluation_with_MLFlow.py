@@ -6,6 +6,7 @@ import os
 from urllib.parse import urlparse
 from SmartBin.utils.common import save_json
 from SmartBin.config.configuration import EvaluationConfig
+from dotenv import load_dotenv
 
 class Evaluation:
     def __init__(self, config: EvaluationConfig):
@@ -55,6 +56,11 @@ class Evaluation:
 
     
     def log_into_mlflow(self):
+        dotenv_path = Path('~\SmartBin-Intelligent-Waste-Sorting-with-IoT-and-Machine-Learning\.env')
+        load_dotenv(dotenv_path=dotenv_path)
+        os.environ["MLFLOW_TRACKING_URI"]=os.getenv("MLFLOW_TRACKING_URI")
+        os.environ["MLFLOW_TRACKING_USERNAME"]= os.getenv("MLFLOW_TRACKING_USERNAME")
+        os.environ["MLFLOW_TRACKING_PASSWORD"]= os.getenv("MLFLOW_TRACKING_PASSWORD")
         mlflow.set_registry_uri(self.config.mlflow_uri)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         
