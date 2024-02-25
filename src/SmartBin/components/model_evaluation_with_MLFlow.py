@@ -55,9 +55,6 @@ class Evaluation:
 
     
     def log_into_mlflow(self):
-        os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/Affan1/SmartBin-Intelligent-Waste-Sorting-with-IoT-and-Machine-Learning.mlflow"
-        os.environ["MLFLOW_TRACKING_USERNAME"]="Affan1" 
-        os.environ["MLFLOW_TRACKING_PASSWORD"]="daaa28c1a7c91083dd43eefb53251b43e7cc629f"
         mlflow.set_registry_uri(self.config.mlflow_uri)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         
